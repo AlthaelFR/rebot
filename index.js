@@ -40,7 +40,7 @@ fs.readdir("./commands/", (err, files) => {
       //Client.user.setPresence
 
       // Stable :
-      client.user.setPresence({ game: { name : status }, status: 'WHATCHING' });
+      bot.user.setPresence({ game: { name : status }, status: 'WHATCHING' });
 
       //MASTER:
       //client.user.setPresence({ activity: { name : status }, status: 'WATCHING' }); //
