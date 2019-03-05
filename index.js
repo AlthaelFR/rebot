@@ -46,8 +46,6 @@ fs.readdir("./commands/", (err, files) => {
       //client.user.setPresence({ activity: { name : status }, status: 'WATCHING' }); //
     }, 5000) //C'est l'intervalle de 5s
 
-    bot.user.setActivity("-help | By Althael", {type: "WATCHING"});
-
 });
 
 
