@@ -35,7 +35,7 @@ fs.readdir("./commands/", (err, files) => {
       //Set Status
 
       //Random Item Array
-      let status = statuses(Math.floor(Math.random()* statuses.length));
+      let status = statuses (Math.floor(Math.random()* statuses.length));
 
       //Client.user.setPresence
 
