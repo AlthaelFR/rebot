@@ -1,5 +1,5 @@
 const botconfig = require("./botconfig.json");
-const token = process.env.TOKEN;
+const tokenfile = require("./token.json");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
@@ -24,11 +24,34 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
-bot.on("ready", async () => {
-  console.log(`${bot.user.username} est en ligne sur ${bot.guilds.size} serveurs !`);
-  bot.user.setActivity("-help | By Althael", {type: "WATCHING"});
+//Changement du statuts du Bot
+  let statuses = ['Hello World', '-help | By Althael', `Présent sur ${bot.guilds.size} serveurs`, 'Je CHANGE LE CODE :)'];
+
+  bot.on("ready", async () => {
+    console.log(`${bot.user.username} est en ligne sur ${bot.guilds.size} serveurs !`);
+
+    setInterval(function() {
+
+      //Set Status
+
+      //Random Item Array
+      let status = statuses(Math.floor(Math.random()* statuses.length));
+
+      //Client.user.setPresence
+
+      // Stable :
+      client.user.setPresence({ game: { name : status }, status: 'WHATCHING' });
+
+      //MASTER:
+      //client.user.setPresence({ activity: { name : status }, status: 'WATCHING' }); //
+    }, 5000) //C'est l'intervalle de 5s
+
+    bot.user.setActivity("-help | By Althael", {type: "WATCHING"});
 
 });
+
+
+//Fin du changement.
 
 bot.on("message", async message => {
   if(message.author.bot) return;
@@ -110,4 +133,4 @@ bot.on("message", async message => {
 });
 
 
-bot.login(token);
+bot.login(tokenfile.token);
